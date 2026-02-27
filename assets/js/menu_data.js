@@ -5,7 +5,7 @@ const MENU_DATA = {
             {
                 "title": "Putter Golf",
                 "items": [
-                    { "name": "Adult Golf", "price": "7.00", "description": "Per person" },
+                    { "name": "Adult Golf", "price": "8.00", "description": "Per person" },
                     { "name": "Kids 3 & Under", "price": "Free", "description": "With paying adult" },
                     { "name": "Seasonal Pass", "price": "60.00", "description": "Unlimited golf for the season" }
                 ]
