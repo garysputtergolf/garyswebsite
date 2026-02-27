@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu & Pricing | Gary's Putter Golf & Jiffy Pup</title>
+    <meta name="description"
+        content="Check out our menu and prices for mini golf, camping, and the famous Jiffy Pup restaurant.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Menu Data & Script -->
+    <script src="assets/js/menu_data.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body class="menu-page">
+    <header id="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Gary's Logo">
+            </a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="menu.html" class="active">Menu & Prices</a></li>
+                    <li><a href="index.html#gallery">Experience</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://www.camplife.com/1395/reservation/step1" target="_blank"
+                            class="btn btn-primary">Book Now</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Menu & Pricing</h1>
+                <p>Great fun and delicious food at family-friendly prices.</p>
+            </div>
+        </section>
+
+        <section id="menu-section" class="section-padding">
+            <div class="container">
+                <!-- Tab Navigation -->
+                <div class="menu-tabs">
+                    <button class="tab-btn active" data-tab="activities">Fun & Activities</button>
+                    <button class="tab-btn" data-tab="food">Jiffy Pup Restaurant</button>
+                </div>
+
+                <!-- Dynamic Menu Content -->
+                <div id="menu-container">
+                    <!-- Content will be injected by script.js -->
+                </div>
+
+                <div class="menu-footer text-center">
+                    <p class="small-text">* Prices subject to change. Please ask server for details.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Gary's</h3>
+                <p>Putter Golf & Jiffy Pup</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="menu.html">Menu</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://www.camplife.com/1395/reservation/step1">Book Now</a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="current-year">2024</span> Gary's Putter Golf & Jiffy Pup. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
