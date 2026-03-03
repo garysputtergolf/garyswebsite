@@ -26,6 +26,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100VW;
 }
 
 body {
@@ -34,6 +36,9 @@ body {
     line-height: 1.6;
     background-color: var(--bg-color);
     overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 img {
@@ -1144,6 +1149,14 @@ footer {
 }
 
 @media (max-width: 991px) {
+    .cabins-hero {
+        flex-direction: column;
+    }
+
+    .cabins-hero-content {
+        padding-bottom: 0;
+    }
+
     .cabins-hero-content h1 {
         font-size: 3.5rem;
     }
@@ -1161,8 +1174,9 @@ footer {
         position: relative;
         transform: none;
         left: 0;
-        width: 100%;
-        margin-top: -3rem;
+        width: 90%;
+        margin-top: 3rem;
+        bottom: auto;
     }
 
     .premium-details {
