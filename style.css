@@ -27,7 +27,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    width: 100VW;
+    width: 100%;
 }
 
 body {
