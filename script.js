@@ -156,12 +156,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     const delayClass = index > 0 ? `delay-${index * 100}` : '';
                     const imgSrc = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url;
 
+                    let mediaTypeLabel = '';
+                    let mediaIcon = '';
+                    if (post.media_type === 'VIDEO') {
+                        mediaTypeLabel = 'Reel';
+                        mediaIcon = '▶️';
+                    } else if (post.media_type === 'CAROUSEL_ALBUM') {
+                        mediaTypeLabel = 'Carousel';
+                        mediaIcon = '📑';
+                    } else {
+                        mediaTypeLabel = 'Photo';
+                        mediaIcon = '📷';
+                    }
+
+                    const caption = post.caption ? post.caption : '';
+                    const shortCaption = caption.length > 80 ? caption.substring(0, 80) + '...' : caption;
+
                     html += `
                     <a href="${post.permalink}" target="_blank" class="ig-post fade-in ${delayClass}">
-                        <img src="${imgSrc}" alt="${post.caption ? post.caption.substring(0, 50) + '...' : 'Instagram Post'}" loading="lazy">
+                        <img src="${imgSrc}" alt="${caption.substring(0, 50)}" loading="lazy">
                         <div class="ig-overlay">
-                            <div class="ig-stats">
-                                <span>View on Instagram</span>
+                            <div class="ig-content">
+                                <span class="ig-type">${mediaIcon} ${mediaTypeLabel}</span>
+                                <p class="ig-caption">${shortCaption}</p>
+                                <span class="ig-btn">View on Instagram</span>
                             </div>
                         </div>
                     </a>
