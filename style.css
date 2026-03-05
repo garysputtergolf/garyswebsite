@@ -350,6 +350,50 @@ h4 {
     color: var(--primary-color);
 }
 
+/* Activities Banner */
+#activities-banner {
+    position: relative;
+    background: linear-gradient(rgba(45, 90, 39, 0.9), rgba(45, 90, 39, 0.95)), url('assets/images/about_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 3rem 0;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.banner-track {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 35s linear infinite;
+}
+
+.activity-item {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 3rem;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+/* Pause scroll on hover for readability */
+#activities-banner:hover .banner-track {
+    animation-play-state: paused;
+}
+
 /* Instagram Feed Section */
 .ig-handle-link {
     display: inline-block;
