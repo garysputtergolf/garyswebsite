@@ -5,6 +5,9 @@ on:
     - cron: '0 * * * *' # Run hourly
   workflow_dispatch: # Allow manual triggers
 
+permissions:
+  contents: write
+
 jobs:
   refresh-feed:
     runs-on: ubuntu-latest
