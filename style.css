@@ -153,11 +153,16 @@ h4 {
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: var(--transition);
+    transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     padding: 1rem 0;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+#main-header.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
 }
 
 .header-content {
@@ -295,7 +300,8 @@ h4 {
     opacity: 0.05;
     z-index: 0;
     pointer-events: none;
-    transition: var(--transition);
+    transition: opacity 0.6s ease-out;
+    will-change: opacity, transform;
 }
 
 .about-grid {

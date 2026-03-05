@@ -21,15 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sticky Header Effect
     const header = document.getElementById('main-header');
+    let isScrolled = false;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            header.style.padding = '0.5rem 0';
-        } else {
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-            header.style.padding = '1rem 0';
+        const shouldBeScrolled = window.scrollY > 50;
+        if (shouldBeScrolled !== isScrolled) {
+            isScrolled = shouldBeScrolled;
+            header.classList.toggle('scrolled', isScrolled);
         }
-    });
+    }, { passive: true });
 
     // Reveal on Scroll Animation
     const observerOptions = {
