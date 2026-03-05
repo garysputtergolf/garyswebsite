@@ -389,11 +389,6 @@ h4 {
     }
 }
 
-/* Pause scroll on hover for readability */
-#activities-banner:hover .banner-track {
-    animation-play-state: paused;
-}
-
 /* Instagram Feed Section */
 .ig-handle-link {
     display: inline-block;
