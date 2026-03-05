@@ -26,6 +26,6 @@ fi
 
 # Extract the 'data' array and filter out any irrelevant fields or format it nicely
 # and limit to the top 4 posts
-echo "$response" | jq '{data: [.data | limit(4; .[])]}' > instagram_feed.json
+echo "$response" | jq '{data: [.data | limit(4; .[])]}' > assets/instagram_feed.json
 
-echo "Successfully wrote instagram_feed.json"
+echo "Successfully wrote assets/instagram_feed.json"
