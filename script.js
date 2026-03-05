@@ -133,4 +133,50 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Dynamic Instagram Feed Rendering
+    const igGridContainer = document.getElementById('ig-grid-container');
+    if (igGridContainer) {
+        fetch('instagram_feed.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const posts = data.data;
+                if (!posts || posts.length === 0) {
+                    igGridContainer.innerHTML = '<p>Follow us on Instagram to see more!</p>';
+                    return;
+                }
+
+                let html = '';
+                posts.forEach((post, index) => {
+                    const delayClass = index > 0 ? `delay-${index * 100}` : '';
+                    const imgSrc = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url;
+                    
+                    html += `
+                    <a href="${post.permalink}" target="_blank" class="ig-post fade-in ${delayClass}">
+                        <img src="${imgSrc}" alt="${post.caption ? post.caption.substring(0, 50) + '...' : 'Instagram Post'}" loading="lazy">
+                        <div class="ig-overlay">
+                            <div class="ig-stats">
+                                <span>View on Instagram</span>
+                            </div>
+                        </div>
+                    </a>
+                    `;
+                });
+                
+                igGridContainer.innerHTML = html;
+                
+                // Re-observe newly added elements for animation
+                const newAnimatedElements = igGridContainer.querySelectorAll('.fade-in');
+                newAnimatedElements.forEach(el => observer.observe(el));
+            })
+            .catch(error => {
+                console.error('Error loading Instagram feed:', error);
+                // Fail silently by not showing anything, or show a fallback message
+            });
+    }
 });
