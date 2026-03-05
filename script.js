@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dynamic Instagram Feed Rendering
     const igGridContainer = document.getElementById('ig-grid-container');
     if (igGridContainer) {
-        fetch('instagram_feed.json')
+        fetch('assets/instagram_feed.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 posts.forEach((post, index) => {
                     const delayClass = index > 0 ? `delay-${index * 100}` : '';
                     const imgSrc = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url;
-                    
+
                     html += `
                     <a href="${post.permalink}" target="_blank" class="ig-post fade-in ${delayClass}">
                         <img src="${imgSrc}" alt="${post.caption ? post.caption.substring(0, 50) + '...' : 'Instagram Post'}" loading="lazy">
@@ -167,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     </a>
                     `;
                 });
-                
+
                 igGridContainer.innerHTML = html;
-                
+
                 // Re-observe newly added elements for animation
                 const newAnimatedElements = igGridContainer.querySelectorAll('.fade-in');
                 newAnimatedElements.forEach(el => observer.observe(el));
