@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${imgSrc}" alt="${caption.substring(0, 50)}" loading="lazy">
                         <div class="ig-overlay">
                             <div class="ig-content">
-                                <span class="ig-type">${mediaIcon} ${mediaTypeLabel}</span>
+                                <span class="ig-type">${mediaIcon}</span>
                                 <p class="ig-caption">${shortCaption}</p>
                                 <span class="ig-btn">View on Instagram</span>
                             </div>
