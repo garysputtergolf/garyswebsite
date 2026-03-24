@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let html = '';
                 posts.forEach((post, index) => {
                     const delayClass = index > 0 ? `delay-${index * 100}` : '';
-                    const imgSrc = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url;
+                    const imgSrc = `assets/ig_media/${post.id}.jpg`;
 
                     let mediaTypeLabel = '';
                     let mediaIcon = '';

@@ -26,6 +26,25 @@ fi
 
 # Extract the 'data' array and filter out any irrelevant fields or format it nicely
 # and limit to the top 4 posts
-echo "$response" | jq '{data: [.data | limit(4; .[])]}' > assets/instagram_feed.json
+mkdir -p assets/ig_media
+
+# Clear out any past images before storing the latest 4 to save space
+rm -f assets/ig_media/*
+
+# Download images
+echo "$response" | jq -c '.data | limit(4; .[])' | while read -r post; do
+  id=$(echo "$post" | jq -r '.id')
+  media_type=$(echo "$post" | jq -r '.media_type')
+  if [ "$media_type" = "VIDEO" ]; then
+    url=$(echo "$post" | jq -r '.thumbnail_url')
+  else
+    url=$(echo "$post" | jq -r '.media_url')
+  fi
+  # Download and save as id.jpg
+  curl -s -o "assets/ig_media/${id}.jpg" "$url"
+done
+
+# Save JSON without media_url and thumbnail_url so it doesn't change on every run
+echo "$response" | jq '{data: [.data | limit(4; .[]) | del(.media_url, .thumbnail_url)]}' > assets/instagram_feed.json
 
 echo "Successfully wrote assets/instagram_feed.json"
