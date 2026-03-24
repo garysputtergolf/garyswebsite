@@ -1,19 +1,26 @@
 :root {
     --primary-color: #2D5A27;
-    /* Forest Green */
+    /* Forest Green (Gary's Original) */
     --secondary-color: #E6B800;
-    /* Sun Yellow */
+    /* Sun Yellow (Gary's Original) */
     --accent-color: #5D4037;
-    /* Wood Brown */
-    --text-color: #333333;
-    --light-text: #f4f4f4;
-    --white: #ffffff;
-    --bg-color: #ffffff;
-    --bg-light: #f9f9f9;
-    --font-heading: 'Playfair Display', serif;
+    /* Wood Brown (Gary's Original) */
+    --text-color: #2A3329;
+    /* Dark forest tint for text */
+    --light-text: #F2EFE9;
+    /* Warm Cream for light text */
+    --white: #F8F5F0;
+    /* Off-white for outdoorsy feel */
+    --bg-color: #FDFCF8;
+    /* Very light warm background */
+    --bg-light: #F2EFE9;
+    /* Warm Cream */
+    --font-heading: 'Averia Serif Libre', serif;
+    --font-subheading: 'Rokkitt', serif;
     --font-body: 'Outfit', sans-serif;
+    --font-banner: 'Passion One', sans-serif;
     --transition: cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-    --border-radius: 16px;
+    --border-radius: 20px;
     --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -72,7 +79,7 @@ ul {
 }
 
 .section-padding {
-    padding: 5rem 0;
+    padding: 7rem 0;
 }
 
 .bg-light {
@@ -130,12 +137,13 @@ h4 {
 
 .subtitle {
     display: block;
-    color: var(--primary-color);
+    font-family: var(--font-subheading);
+    color: var(--secondary-color);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
 }
 
 .section-header h2 {
@@ -273,20 +281,22 @@ h4 {
 }
 
 .eyebrow {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-family: var(--font-subheading);
+    font-size: 1.6rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: var(--secondary-color);
 }
 
 #hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     /* Large hero text */
     margin-bottom: 1.5rem;
-    color: white;
+    color: var(--white);
+    letter-spacing: -1px;
 }
 
 .highlight {
@@ -331,8 +341,20 @@ h4 {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .about-card {
@@ -349,7 +371,7 @@ h4 {
 }
 
 .image-wrapper {
-    height: 200px;
+    height: 160px;
     overflow: hidden;
 }
 
@@ -381,7 +403,7 @@ h4 {
     background-position: center;
     background-attachment: fixed;
     padding: 3rem 0;
-    color: white;
+    color: var(--white);
     overflow: hidden;
     white-space: nowrap;
 }
@@ -393,10 +415,12 @@ h4 {
 }
 
 .activity-item {
+    font-family: var(--font-banner);
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
+    text-transform: uppercase;
     margin: 0 3rem;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -646,8 +670,8 @@ h4 {
 
 /* Footer */
 footer {
-    background-color: #1a1a1a;
-    color: #888;
+    background-color: var(--primary-color);
+    color: var(--light-text);
     padding: 3rem 0;
     text-align: center;
 }
