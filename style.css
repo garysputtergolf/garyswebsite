@@ -160,10 +160,22 @@ h4 {
 }
 
 .divider {
-    width: 60px;
-    height: 3px;
-    background-color: var(--secondary-color);
+    width: 52px;
+    height: 4px;
+    background-image: linear-gradient(to right, var(--secondary-color) 60%, transparent 60%);
+    background-size: 20px 4px;
+    background-repeat: repeat-x;
+    background-position: left center;
     margin: 0 auto 3rem;
+}
+
+.divider.divider-swoop {
+    width: 80px;
+    height: 18px;
+    background-image: none;
+    background-color: var(--secondary-color);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 10 Q 25 2, 50 10 T 95 10' fill='none' stroke='black' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 10 Q 25 2, 50 10 T 95 10' fill='none' stroke='black' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
 }
 
 /* Header */
