@@ -71,7 +71,10 @@ ul {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
 }
 
 .text-center {
@@ -242,7 +245,9 @@ h4 {
 /* Hero Section */
 #hero {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 50px;
     display: flex;
     align-items: center;
     color: white;
@@ -586,6 +591,8 @@ h4 {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
 }
 
 .contact-info {
@@ -803,6 +810,7 @@ footer {
         right: -100%;
         width: 70%;
         height: 100vh;
+        overflow-y: auto;
         background: white;
         transition: 0.4s ease;
         padding-top: 4rem;
