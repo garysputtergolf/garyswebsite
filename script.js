@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reveal on Scroll Animation
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.02, /* Lower threshold so giant galleries trigger quickly */
+        rootMargin: "0px 0px -20px 0px" /* Slightly less padding from bottom viewport edge */
     };
 
     const observer = new IntersectionObserver((entries) => {
