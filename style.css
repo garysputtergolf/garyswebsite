@@ -438,13 +438,19 @@ h4 {
 }
 
 .activity-item {
-    font-family: var(--font-banner); /* Using Oswald for a classic wooden trail-sign aesthetic */
-    font-size: 1.8rem; /* Confident size */
-    font-weight: 500; /* Sturdy, medium weight */
-    text-transform: uppercase; /* Structural all-caps */
-    color: #f4edd4; /* Soft, faded vintage parchment color, not harsh white or yellow */
-    margin: 0 3rem; 
-    letter-spacing: 2px; /* Authentic painted-sign spacing */
+    font-family: var(--font-banner);
+    /* Using Oswald for a classic wooden trail-sign aesthetic */
+    font-size: 1.8rem;
+    /* Confident size */
+    font-weight: 500;
+    /* Sturdy, medium weight */
+    text-transform: uppercase;
+    /* Structural all-caps */
+    color: #f4edd4;
+    /* Soft, faded vintage parchment color, not harsh white or yellow */
+    margin: 0 3rem;
+    letter-spacing: 2px;
+    /* Authentic painted-sign spacing */
     display: inline-flex;
     align-items: center;
     gap: 1.5rem;
@@ -487,16 +493,19 @@ h4 {
 
 /* Individual Scrapbook Photos */
 .ig-post {
-    width: 100%; /* Take whatever 1fr provides exactly */
+    width: 100%;
+    /* Take whatever 1fr provides exactly */
     position: relative;
     border-radius: var(--border-radius);
-    border: 8px solid var(--white); /* Thick photo paper border */
+    border: 8px solid var(--white);
+    /* Thick photo paper border */
     overflow: hidden;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
     transition: transform 0.4s var(--transition), box-shadow 0.4s ease;
     background: var(--white);
-    aspect-ratio: 4 / 5; /* Standardizes sizing so photos don't look weirdly jagged */
+    aspect-ratio: 4 / 5;
+    /* Standardizes sizing so photos don't look weirdly jagged */
 }
 
 /* Stagger every other post downwards! */
@@ -506,43 +515,54 @@ h4 {
 
 @media (max-width: 900px) {
     .ig-grid {
-        grid-template-columns: repeat(2, 1fr); /* Exactly 2x2 grid */
+        grid-template-columns: repeat(2, 1fr);
+        /* Exactly 2x2 grid */
     }
+
     .ig-post:nth-child(even) {
-        margin-top: 0; /* Remove stagger on smaller screens */
+        margin-top: 0;
+        /* Remove stagger on smaller screens */
     }
 }
 
 @media (max-width: 600px) {
     .ig-grid {
-        grid-template-columns: 1fr; /* Force single column list */
+        grid-template-columns: 1fr;
+        /* Force single column list */
         padding-bottom: 0;
     }
-    
+
     .ig-post {
-        margin: 0 auto; /* Center the posts in the list if they are maxed */
-        max-width: 400px; /* Keep it from getting obscenely huge on dense screens */
+        margin: 0 auto;
+        /* Center the posts in the list if they are maxed */
+        max-width: 400px;
+        /* Keep it from getting obscenely huge on dense screens */
     }
 
     .section-padding {
-        padding: 4rem 0; /* Fix excessive vertical padding */
+        padding: 4rem 0;
+        /* Fix excessive vertical padding */
     }
-    
+
     .card-content {
-        text-align: center; /* Center buttons and text on mobile cabin cards */
+        text-align: center;
+        /* Center buttons and text on mobile cabin cards */
     }
 }
 
 .ig-post img {
     width: 100%;
-    height: 100%; /* Force image to fill aspect ratio */
-    object-fit: cover; /* Crop natively without squishing */
+    height: 100%;
+    /* Force image to fill aspect ratio */
+    object-fit: cover;
+    /* Crop natively without squishing */
     display: block;
     transition: transform 0.6s var(--transition);
 }
 
 .ig-post:hover {
-    transform: translateY(-8px) scale(1.02) rotate(2deg); /* Organic tilt on hover! */
+    transform: translateY(-8px) scale(1.02) rotate(2deg);
+    /* Organic tilt on hover! */
     box-shadow: var(--shadow-hover);
     z-index: 10;
 }
@@ -551,9 +571,6 @@ h4 {
     transform: scale(1.05);
 }
 
-.ig-post:target {
-    /* Optional placeholder if needed later */
-}
 
 .ig-overlay {
     position: absolute;
@@ -603,7 +620,7 @@ h4 {
     border-radius: 50px;
     align-self: flex-start;
     margin-bottom: auto;
-    box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
 .ig-caption {
@@ -750,7 +767,7 @@ h4 {
         align-items: center;
         gap: 0.5rem;
     }
-    
+
     .social-links {
         justify-content: center;
     }
@@ -890,20 +907,24 @@ footer {
         text-align: center;
         gap: 1rem;
     }
-    
+
     .footer-col {
         align-items: center;
         gap: 0.5rem;
     }
 
-    .links-col, .contact-col {
-        display: none; /* Radically simplify footer by hiding redundant info */
+    .links-col,
+    .contact-col {
+        display: none;
+        /* Radically simplify footer by hiding redundant info */
     }
 
-    .footer-tagline, .est-text {
-        display: none; /* Only show logo and copyright on mobile */
+    .footer-tagline,
+    .est-text {
+        display: none;
+        /* Only show logo and copyright on mobile */
     }
-    
+
     footer {
         padding: 2rem 0;
     }
