@@ -24,8 +24,20 @@ if [ ! -z "$error" ]; then
   exit 1
 fi
 
-# Extract the 'data' array and filter out any irrelevant fields or format it nicely
-# and limit to the top 4 posts
+# Generate the new JSON payload to a temporary file
+TMP_JSON=$(mktemp)
+echo "$response" | jq '{data: [.data | limit(4; .[]) | del(.media_url, .thumbnail_url)]}' > "$TMP_JSON"
+
+# If the JSON precisely matches what we already have, exit gracefully without touching binaries!
+if [ -f "assets/instagram_feed.json" ] && cmp -s "$TMP_JSON" assets/instagram_feed.json; then
+  echo "No new Instagram posts detected. Exiting gracefully without updates."
+  rm "$TMP_JSON"
+  exit 0
+fi
+
+# The feed has changed! Overwrite the old JSON and proceed to wipe and download new imagery
+mv "$TMP_JSON" assets/instagram_feed.json
+
 mkdir -p assets/ig_media
 
 # Clear out any past images before storing the latest 4 to save space
@@ -43,8 +55,5 @@ echo "$response" | jq -c '.data | limit(4; .[])' | while read -r post; do
   # Download and save as id.jpg
   curl -s -o "assets/ig_media/${id}.jpg" "$url"
 done
-
-# Save JSON without media_url and thumbnail_url so it doesn't change on every run
-echo "$response" | jq '{data: [.data | limit(4; .[]) | del(.media_url, .thumbnail_url)]}' > assets/instagram_feed.json
 
 echo "Successfully wrote assets/instagram_feed.json"
