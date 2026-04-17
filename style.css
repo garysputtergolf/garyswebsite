@@ -185,7 +185,7 @@ h4 {
     width: 100%;
     z-index: 1000;
     transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    padding: 1rem 0;
+    padding: 0.4rem 0;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -195,7 +195,7 @@ h4 {
 
 #main-header.scrolled {
     box-shadow: var(--shadow-md);
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
     background: rgba(255, 255, 255, 0.95);
 }
 
@@ -206,9 +206,14 @@ h4 {
 }
 
 .logo img {
-    height: 50px;
+    height: 70px;
     /* Adjust based on logo aspect ratio */
     width: auto;
+    transition: height 0.3s ease;
+}
+
+#main-header.scrolled .logo img {
+    height: 60px;
 }
 
 #main-nav ul {
@@ -806,7 +811,7 @@ footer {
 }
 
 .brand-col .footer-logo-img {
-    height: 70px;
+    height: 90px;
     width: auto;
     transition: var(--transition);
 }
