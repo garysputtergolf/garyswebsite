@@ -426,7 +426,7 @@ h4 {
 /* Activities Banner */
 #activities-banner {
     position: relative;
-    background: linear-gradient(rgba(45, 90, 39, 0.9), rgba(45, 90, 39, 0.95)), url('assets/images/about_1.jpg');
+    background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(45, 90, 39, 0.8)), url('assets/images/ourLocation.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
