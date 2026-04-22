@@ -5,7 +5,7 @@ const MENU_DATA = {
             {
                 "title": "Putter Golf",
                 "items": [
-                    { "name": "Adult Golf", "price": "6.00", "description": "Per person" },
+                    { "name": "Adult Golf", "price": "6.00", "description": "Per person", "popular": true },
                     { "name": "Kids 3 & Under", "price": "Free", "description": "With paying adult" },
                     { "name": "Seasonal Pass", "price": "60.00", "description": "Unlimited golf for the season" }
                 ]
@@ -43,7 +43,7 @@ const MENU_DATA = {
                 "title": "Combo Meals",
                 "note": "Includes fries & soda",
                 "items": [
-                    { "name": "Jiffy Pup Combo", "price": "7.89" },
+                    { "name": "Jiffy Pup Combo", "price": "7.89", "popular": true },
                     { "name": "Hamburger Combo", "price": "9.49" },
                     { "name": "Big Deluxe Combo", "price": "10.99" },
                     { "name": "Fish Sandwich Combo", "price": "9.99" },
@@ -55,15 +55,15 @@ const MENU_DATA = {
             {
                 "title": "Sandwiches & More",
                 "items": [
-                    { "name": "Jiffy Pup", "price": "2.99" },
+                    { "name": "Jiffy Pup", "price": "2.99", "popular": true },
                     { "name": "All Beef Hot Dog", "price": "3.69" },
-                    { "name": "Texas Hot Dog", "price": "4.25" },
+                    { "name": "Texas Hot Dog", "price": "4.25", "popular": true },
                     { "name": "Hamburger", "price": "3.99" },
                     { "name": "Cheeseburger", "price": "4.59" },
                     { "name": "Deluxe Burger", "price": "5.99" },
                     { "name": "Chicken Sandwich", "price": "6.69" },
                     { "name": "Fish Sandwich", "price": "6.49" },
-                    { "name": "Philly Cheesesteak", "price": "8.49" },
+                    { "name": "Philly Cheesesteak", "price": "8.49", "popular": true },
                     { "name": "Grilled Cheese", "price": "3.29" },
                     { "name": "Chicken Tenders", "price": "6.69" },
                     { "name": "Wraps w/ Chips", "price": "11.99" }
@@ -106,7 +106,7 @@ const MENU_DATA = {
                     { "name": "Hand Dipped (Lg)", "price": "4.50" },
                     { "name": "Sundae (Reg)", "price": "5.29" },
                     { "name": "Sundae (Lg)", "price": "6.29" },
-                    { "name": "Banana Split", "price": "7.99" },
+                    { "name": "Banana Split", "price": "7.99", "popular": true },
                     { "name": "Razzles (Reg)", "price": "4.89" },
                     { "name": "Milkshakes", "price": "Various" }
                 ]

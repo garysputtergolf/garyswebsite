@@ -80,28 +80,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuContainer = document.getElementById('menu-container');
     if (menuContainer && typeof MENU_DATA !== 'undefined') {
 
+        const ICON_MAP = {
+            "Putter Golf": "ph-flag-pennant",
+            "Outdoor Fun": "ph-boat",
+            "Gem Mining": "ph-diamond",
+            "Rentals": "ph-house-line",
+            "Combo Meals": "ph-hamburger",
+            "Sandwiches & More": "ph-bread",
+            "Vegetarian": "ph-leaf",
+            "Sides & Snacks": "ph-cookie",
+            "Salads": "ph-plant",
+            "Ice Cream Treats": "ph-ice-cream"
+        };
+
         function renderMenu(categoryKey) {
             const categoryData = MENU_DATA[categoryKey];
             if (!categoryData) return;
 
             let html = `<div class="menu-grid">`;
 
-            categoryData.sections.forEach(section => {
+            categoryData.sections.forEach((section, sIndex) => {
+                const iconClass = ICON_MAP[section.title] || "ph-fork-knife";
+                const delay = sIndex * 100;
+
                 html += `
-                <div class="menu-category-card">
-                    <h3>${section.title}</h3>
+                <div class="menu-category-card fade-in-up" style="transition-delay: ${delay}ms">
+                    <div class="card-header">
+                        <div class="category-icon"><i class="ph ph-bold ${iconClass}"></i></div>
+                        <h3>${section.title}</h3>
+                    </div>
                     ${section.note ? `<span class="category-note">${section.note}</span>` : ''}
                     <ul class="menu-items">
                 `;
 
                 section.items.forEach(item => {
+                    const isPopular = item.popular === true;
+                    const price = item.price.startsWith('$') || item.price === 'Free' || item.price === 'Various' ? item.price : '$' + item.price;
+
+                    // Group last word and star together to prevent orphans
+                    const nameParts = item.name.split(' ');
+                    const lastName = nameParts.pop();
+                    const namePrefix = nameParts.length > 0 ? nameParts.join(' ') + ' ' : '';
+                    const starIcon = isPopular ? `<span class="star-wrapper"><i class="ph ph-fill ph-star" style="color: var(--secondary-color); margin-left: 5px;" title="Fan Favorite"></i></span>` : '';
+
                     html += `
                     <li class="menu-item">
-                        <div>
-                            <span class="item-name">${item.name}</span>
-                            ${item.description ? `<span class="item-desc">${item.description}</span>` : ''}
+                        <div class="item-main">
+                            <span class="item-name">${namePrefix}<span style="white-space: nowrap;">${lastName}${starIcon}</span></span>
+                            <div class="item-dots"></div>
+                            <span class="item-price">${price}</span>
                         </div>
-                        <span class="item-price">${item.price.startsWith('$') || item.price === 'Free' || item.price === 'Various' ? item.price : '$' + item.price}</span>
+                        ${item.description ? `<span class="item-desc">${item.description}</span>` : ''}
                     </li>
                     `;
                 });
@@ -114,6 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             html += `</div>`;
             menuContainer.innerHTML = html;
+
+            // Re-observe new elements
+            const newElements = menuContainer.querySelectorAll('.fade-in-up');
+            newElements.forEach(el => observer.observe(el));
         }
 
         // Initial Render
