@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ICON_MAP = {
             "Putter Golf": "ph-flag-pennant",
             "Outdoor Fun": "ph-boat",
-            "Gem Mining": "ph-diamond",
+            "Gem Mining": "ph-sketch-logo",
             "Rentals": "ph-house-line",
             "Combo Meals": "ph-hamburger",
             "Sandwiches & More": "ph-bread",
@@ -115,7 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 section.items.forEach(item => {
                     const isPopular = item.popular === true;
-                    const price = item.price.startsWith('$') || item.price === 'Free' || item.price === 'Various' ? item.price : '$' + item.price;
+                    let rawPrice = item.price;
+                    if (!isNaN(rawPrice) && rawPrice !== '' && rawPrice !== 'Free' && rawPrice !== 'Various' && !rawPrice.includes('.')) {
+                        rawPrice = parseFloat(rawPrice).toFixed(2);
+                    }
+                    const price = rawPrice.toString().startsWith('$') || rawPrice === 'Free' || rawPrice === 'Various' ? rawPrice : '$' + rawPrice;
 
                     // Group last word and star together to prevent orphans
                     const nameParts = item.name.split(' ');
@@ -229,5 +233,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error loading Instagram feed:', error);
                 // Fail silently by not showing anything, or show a fallback message
             });
+    }
+
+    // Announcement Bar Logic
+    const announcementBar = document.getElementById('announcement-bar');
+    const announcementText = document.getElementById('announcement-text');
+    if (typeof ANNOUNCEMENT_DATA !== 'undefined' && ANNOUNCEMENT_DATA && announcementBar && announcementText) {
+        const now = new Date();
+        const start = new Date(ANNOUNCEMENT_DATA.startDate);
+        const end = new Date(ANNOUNCEMENT_DATA.endDate);
+        
+        if (now >= start && now <= end) {
+            announcementText.textContent = ANNOUNCEMENT_DATA.text;
+            announcementBar.style.display = 'block';
+            document.body.classList.add('announcement-active');
+            
+            // Add padding to body so the fixed header isn't covered
+            document.body.style.paddingTop = announcementBar.offsetHeight + 'px';
+            
+            const updateHeaderTop = () => {
+                if (header) {
+                    const barHeight = announcementBar.offsetHeight;
+                    header.style.top = Math.max(0, barHeight - window.scrollY) + 'px';
+                }
+            };
+            window.addEventListener('scroll', updateHeaderTop, { passive: true });
+            setTimeout(updateHeaderTop, 100);
+        }
     }
 });

@@ -38,6 +38,7 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
+    background-color: var(--primary-color);
 }
 
 body {
@@ -274,6 +275,7 @@ h4 {
     align-items: center;
     color: white;
     text-align: center;
+    isolation: isolate;
 }
 
 .hero-background {
@@ -1756,5 +1758,62 @@ footer {
 
     .masonry-item.wide {
         grid-column: span 1;
+    }
+}
+/* Announcement Bar */
+#announcement-bar {
+    background: var(--secondary-color);
+    color: #1a3f17;
+    text-align: center;
+    padding: 10px 20px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    display: none; /* Hidden by default, shown via JS */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#announcement-bar .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#announcement-bar i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    #announcement-bar {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+    }
+}
+
+/* Positioning Logic for Announcement Bar + Fixed Header */
+.announcement-active .menu-page .page-header {
+    padding: 6rem 0 1rem; /* Push down menu/cabins hero */
+}
+.announcement-active .cabins-hero {
+    padding-top: 140px;
+}
+.announcement-active #hero {
+    padding-top: 140px;
+}
+
+/* Reduce whitespace between hero and menu options */
+#menu-section {
+    padding-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    #menu-section {
+        padding-top: 0.5rem;
     }
 }

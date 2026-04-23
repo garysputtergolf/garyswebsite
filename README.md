@@ -10,6 +10,6 @@ A family tradition since 1961 in Coudersport, PA. This repository contains the s
 
 
 ## Contact
-- **Website**: [garysputtergolf.com](https://garysputtergolf.com) (or equivalent domain)
+- **Website**: [getawayatgarys.com](https://getawayatgarys.com)
 - **Instagram**: [@garysputtergolfandjiffypup](https://www.instagram.com/garysputtergolfandjiffypup/)
 - **Email**: garysputtergolf@gmail.com
