@@ -37,18 +37,26 @@
 html {
     scroll-behavior: smooth;
     width: 100%;
-    background-color: var(--primary-color);
+    background: var(--primary-color);
+    /* Fill the very bottom base with footer color */
 }
 
 body {
     font-family: var(--font-body);
     color: var(--text-color);
     line-height: 1.6;
-    background-color: var(--bg-color);
+    background-color: transparent;
+    /* Allow html gradient to show on overscroll */
     overflow-x: hidden;
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+main {
+    background-color: var(--bg-color);
+    /* Main site background */
+    width: 100%;
 }
 
 img {
@@ -795,7 +803,10 @@ footer {
     background-color: var(--primary-color);
     color: var(--bg-light);
     padding: 4rem 0 2rem;
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+    /* Fill iOS safe area */
     border-top: 6px solid var(--accent-color);
+    position: relative;
 }
 
 .footer-grid {
@@ -1058,7 +1069,6 @@ footer {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(26, 63, 23, 0.8)), url('assets/images/ourHistory.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     color: var(--white);
     overflow: hidden;
 }
@@ -1165,7 +1175,7 @@ footer {
     position: relative;
     overflow: hidden;
     transition: all 0.5s ease;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* Wood grain texture overlay */
@@ -1311,7 +1321,7 @@ footer {
         padding: 0 1rem;
         gap: 2rem;
     }
-    
+
     .menu-page .page-header h1 {
         font-size: 3rem;
     }
@@ -1325,22 +1335,22 @@ footer {
     .menu-tabs {
         gap: 0.8rem;
     }
-    
+
     .tab-btn {
         width: 100%;
         padding: 0.8rem;
         font-size: 0.9rem;
     }
-    
+
     .menu-category-card {
         padding: 1.5rem;
     }
-    
+
     .item-name {
         font-size: 1.1rem;
         max-width: 70%;
     }
-    
+
     .item-price {
         font-size: 1.1rem;
     }
@@ -1349,11 +1359,6 @@ footer {
         margin-bottom: 1.5rem;
     }
 }
-
-
-/* ==========================================================================
-   PREMIUM CABINS PAGE STYLING (11/10 REDESIGN)
-   ========================================================================== */
 
 /* Hero Section */
 .cabins-hero {
@@ -1364,8 +1369,8 @@ footer {
     justify-content: center;
     color: var(--white);
     margin-top: 0;
-    padding-top: 100px;
-    /* offset nav */
+    padding: 100px 0 120px;
+    /* Added 120px bottom buffer */
 }
 
 .cabins-hero-bg {
@@ -1402,8 +1407,8 @@ footer {
     position: relative;
     z-index: 3;
     max-width: 800px;
-    padding-bottom: 5rem;
-    /* Space for floating bar */
+    padding-bottom: 2rem;
+    /* Reduced because hero now has padding */
 }
 
 .eyebrow {
@@ -1759,6 +1764,7 @@ footer {
         grid-column: span 1;
     }
 }
+
 /* Announcement Bar */
 #announcement-bar {
     background: var(--secondary-color);
@@ -1773,8 +1779,9 @@ footer {
     left: 0;
     right: 0;
     z-index: 900;
-    display: none; /* Hidden by default, shown via JS */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+    /* Hidden by default, shown via JS */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #announcement-bar .container {
@@ -1797,11 +1804,14 @@ footer {
 
 /* Positioning Logic for Announcement Bar + Fixed Header */
 .announcement-active .menu-page .page-header {
-    padding: 6rem 0 1rem; /* Push down menu/cabins hero */
+    padding: 6rem 0 1rem;
+    /* Push down menu/cabins hero */
 }
+
 .announcement-active .cabins-hero {
     padding-top: 140px;
 }
+
 .announcement-active #hero {
     padding-top: 140px;
 }

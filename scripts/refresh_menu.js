@@ -62,14 +62,23 @@ async function refreshData() {
             if (name && currentSection) {
                 let formattedPrice = price || "";
                 // Format to 2 decimal places if numeric
-                if (!isNaN(price) && price !== '' && price !== 'Free' && price !== 'Various') {
+                if (!isNaN(price) && price !== '' && price !== 'Free' && price !== 'Various' && !price.includes('.')) {
                     formattedPrice = parseFloat(price).toFixed(2);
+                }
+
+                // Special handling for Combo Meals to add section note and clear item descriptions
+                let itemDescription = description || "";
+                if (currentSection.title === "Combo Meals") {
+                    currentSection.note = "Includes fries & soda";
+                    if (itemDescription.toLowerCase() === "includes fries & soda") {
+                        itemDescription = "";
+                    }
                 }
 
                 currentSection.items.push({
                     name,
                     price: formattedPrice,
-                    description: description || "",
+                    description: itemDescription,
                     popular: popular ? popular.toLowerCase() === 'true' : false
                 });
             }

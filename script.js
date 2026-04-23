@@ -262,4 +262,17 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(updateHeaderTop, 100);
         }
     }
+
+    // Safari Overscroll "Backing Blocks" Implementation
+    // Creates fixed blocks behind the content to handle top/bottom spill colors
+    const topBacking = document.createElement('div');
+    topBacking.id = 'overscroll-top-backing';
+    topBacking.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:50vh; background:var(--secondary-color); z-index:-10; pointer-events:none;';
+    
+    const bottomBacking = document.createElement('div');
+    bottomBacking.id = 'overscroll-bottom-backing';
+    bottomBacking.style.cssText = 'position:fixed; bottom:0; left:0; width:100%; height:50vh; background:var(--primary-color); z-index:-10; pointer-events:none;';
+    
+    document.body.prepend(topBacking);
+    document.body.prepend(bottomBacking);
 });

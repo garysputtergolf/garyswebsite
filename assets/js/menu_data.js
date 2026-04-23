@@ -104,41 +104,42 @@ const MENU_DATA = {
         "sections": [
             {
                 "title": "Combo Meals",
+                "note": "Includes fries & soda",
                 "items": [
                     {
                         "name": "Jiffy Pup Combo",
                         "price": "7.89",
-                        "description": "Includes fries & soda",
+                        "description": "",
                         "popular": true
                     },
                     {
                         "name": "Hamburger Combo",
                         "price": "9.49",
-                        "description": "Includes fries & soda",
+                        "description": "",
                         "popular": false
                     },
                     {
                         "name": "Big Deluxe Combo",
                         "price": "10.99",
-                        "description": "Includes fries & soda",
+                        "description": "",
                         "popular": false
                     },
                     {
                         "name": "Fish Sandwich Combo",
                         "price": "9.99",
-                        "description": "Includes fries & soda",
+                        "description": "",
                         "popular": false
                     },
                     {
                         "name": "Chicken Sandwich Combo",
                         "price": "10.19",
-                        "description": "Includes fries & soda",
+                        "description": "",
                         "popular": false
                     },
                     {
                         "name": "Philly Cheesesteak Combo",
                         "price": "12.79",
-                        "description": "Includes fries & soda",
+                        "description": "",
                         "popular": false
                     }
                 ]
