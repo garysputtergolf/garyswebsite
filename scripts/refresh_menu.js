@@ -2,8 +2,8 @@ const fs = require('fs');
 const https = require('https');
 const urlModule = require('url');
 
-const MENU_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCEOeYZz8Y61cSiC7w3zmO3-UOgYvIZ03SMn1OCcyG6r0oOILjQcWTj6nHRrw1GuPRn-3NNcwIeXcY/pub?output=tsv';
-const ANNOUNCEMENT_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCEOeYZz8Y61cSiC7w3zmO3-UOgYvIZ03SMn1OCcyG6r0oOILjQcWTj6nHRrw1GuPRn-3NNcwIeXcY/pub?gid=1262611615&single=true&output=tsv';
+const MENU_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?output=tsv';
+const ANNOUNCEMENT_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?gid=1262611615&single=true&output=tsv';
 const OUTPUT_FILE = './assets/js/menu_data.js';
 
 function fetchTSV(url) {

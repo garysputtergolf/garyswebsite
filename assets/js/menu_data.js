@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-04-23T15:18:13.411Z
+// Updated: 2026-04-23T15:30:47.848Z
 
 const MENU_DATA = {
     "activities": {
@@ -383,7 +383,7 @@ const MENU_DATA = {
 };
 
 const ANNOUNCEMENT_DATA = {
-    "text": "New Summer Hours!",
-    "startDate": "4/21/2026",
-    "endDate": "5/15/2026"
+    "text": "Opening soon for the season on May 17th @ 11am",
+    "startDate": "4/23/2026",
+    "endDate": "5/17/2026"
 };
