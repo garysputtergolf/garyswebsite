@@ -254,7 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const updateHeaderTop = () => {
                 if (header) {
                     const barHeight = announcementBar.offsetHeight;
-                    header.style.top = Math.max(0, barHeight - window.scrollY) + 'px';
+                    const scrollY = Math.max(0, window.scrollY);
+                    header.style.top = Math.max(0, barHeight - scrollY) + 'px';
                 }
             };
             window.addEventListener('scroll', updateHeaderTop, { passive: true });
