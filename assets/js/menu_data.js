@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-04-23T15:30:47.848Z
+// Updated: 2026-04-23T16:28:30.660Z
 
 const MENU_DATA = {
     "activities": {
@@ -383,7 +383,7 @@ const MENU_DATA = {
 };
 
 const ANNOUNCEMENT_DATA = {
-    "text": "Opening soon for the season on May 17th @ 11am",
+    "text": "Opening soon for the 2026 season on May 17th @ 11am",
     "startDate": "4/23/2026",
     "endDate": "5/17/2026"
 };
