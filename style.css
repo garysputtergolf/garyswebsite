@@ -435,7 +435,7 @@ h4 {
 /* Activities Banner */
 #activities-banner {
     position: relative;
-    background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(45, 90, 39, 0.8)), url('assets/images/ourLocation.png');
+    background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(45, 90, 39, 0.8)), url('assets/images/ourLocation.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1066,7 +1066,7 @@ footer {
     position: relative;
     padding: 8rem 0 2rem;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(26, 63, 23, 0.8)), url('assets/images/ourHistory.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(26, 63, 23, 0.8)), url('assets/images/ourHistory.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
