@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-04-23T16:28:30.660Z
+// Updated: 2026-04-23T23:24:49.488Z
 
 const MENU_DATA = {
     "activities": {
@@ -104,7 +104,6 @@ const MENU_DATA = {
         "sections": [
             {
                 "title": "Combo Meals",
-                "note": "Includes fries & soda",
                 "items": [
                     {
                         "name": "Jiffy Pup Combo",
@@ -142,7 +141,8 @@ const MENU_DATA = {
                         "description": "",
                         "popular": false
                     }
-                ]
+                ],
+                "note": "Includes fries & soda"
             },
             {
                 "title": "Sandwiches & More",
@@ -325,25 +325,25 @@ const MENU_DATA = {
                 "items": [
                     {
                         "name": "Soft Serve (Reg)",
-                        "price": "2.50",
+                        "price": "2.5",
                         "description": "",
                         "popular": false
                     },
                     {
                         "name": "Soft Serve (Lg)",
-                        "price": "3.50",
+                        "price": "3.5",
                         "description": "",
                         "popular": false
                     },
                     {
                         "name": "Hand Dipped (Reg)",
-                        "price": "3.50",
+                        "price": "3.5",
                         "description": "",
                         "popular": false
                     },
                     {
                         "name": "Hand Dipped (Lg)",
-                        "price": "4.50",
+                        "price": "4.5",
                         "description": "",
                         "popular": false
                     },
@@ -383,8 +383,54 @@ const MENU_DATA = {
     }
 };
 
-const ANNOUNCEMENT_DATA = {
-    "text": "Opening soon for the 2026 season on May 17th @ 11am",
+const ANNOUNCEMENTS_DATA = {
+    "text": "OPENING SOON!! The 2026 season starts on May 17th @ 11am",
     "startDate": "4/23/2026",
     "endDate": "5/17/2026"
+};
+
+const HOURS_DATA = {
+    "regular": [
+        {
+            "day": "Sunday",
+            "open": "11:00 AM",
+            "close": "10:00 PM"
+        },
+        {
+            "day": "Monday",
+            "open": "11:00 AM",
+            "close": "10:00 PM"
+        },
+        {
+            "day": "Tuesday",
+            "open": "11:00 AM",
+            "close": "10:00 PM"
+        },
+        {
+            "day": "Wednesday",
+            "open": "11:00 AM",
+            "close": "10:00 PM"
+        },
+        {
+            "day": "Thursday",
+            "open": "11:00 AM",
+            "close": "10:00 PM"
+        },
+        {
+            "day": "Friday",
+            "open": "11:00 AM",
+            "close": "6:00 PM"
+        },
+        {
+            "day": "Saturday",
+            "open": "9:00 PM",
+            "close": "11:00 PM"
+        }
+    ],
+    "custom": []
+};
+
+const SEASON_DATA = {
+    "openDate": "5/17/2026",
+    "closeDate": "9/7/2026"
 };

@@ -3,7 +3,9 @@ const https = require('https');
 const urlModule = require('url');
 
 const MENU_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?output=tsv';
-const ANNOUNCEMENT_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?gid=1262611615&single=true&output=tsv';
+const ANNOUNCEMENTS_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?gid=1262611615&single=true&output=tsv';
+const HOURS_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?gid=1730481784&single=true&output=tsv';
+const SEASON_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?gid=915434937&single=true&output=tsv';
 const OUTPUT_FILE = './assets/js/menu_data.js';
 
 function fetchTSV(url) {
@@ -28,8 +30,12 @@ async function refreshData() {
     try {
         console.log('Fetching Menu TSV...');
         const menuTSV = await fetchTSV(MENU_TSV_URL);
-        console.log('Fetching Announcement TSV...');
-        const announcementTSV = await fetchTSV(ANNOUNCEMENT_TSV_URL);
+        console.log('Fetching Announcements TSV...');
+        const announcementsTSV = await fetchTSV(ANNOUNCEMENTS_TSV_URL);
+        console.log('Fetching Hours TSV...');
+        const hoursTSV = await fetchTSV(HOURS_TSV_URL);
+        console.log('Fetching Season TSV...');
+        const seasonTSV = await fetchTSV(SEASON_TSV_URL);
 
         // Parse Menu
         const menuLines = menuTSV.split('\n').filter(line => line.trim() !== '');
@@ -84,22 +90,65 @@ async function refreshData() {
             }
         });
 
-        // Parse Announcement
-        const announcementLines = announcementTSV.split('\n').filter(line => line.trim() !== '');
-        let announcementData = null;
+        // Parse Announcements
+        const announcementLines = announcementsTSV.split('\n').filter(line => line.trim() !== '');
+        let announcementsData = null;
         if (announcementLines.length > 1) {
             const cols = announcementLines[1].split('\t').map(s => s.trim());
             // Columns: Start Date, End Date, Announcement Text
             const [startDateStr, endDateStr, text] = cols;
-            announcementData = {
+            announcementsData = {
                 text,
                 startDate: startDateStr,
                 endDate: endDateStr
             };
         }
 
+        // Parse Hours
+        const hoursLines = hoursTSV.split('\n').filter(line => line.trim() !== '');
+        const hoursData = {
+            regular: [],
+            custom: []
+        };
+        const formatTime = (timeStr) => {
+            if (!timeStr) return '';
+            // Strip seconds if present (e.g., 11:00:00 AM -> 11:00 AM)
+            return timeStr.replace(/:00(?=\s|$)/g, '').replace(/:(\d{2}):00/g, ':$1');
+        };
+
+        hoursLines.forEach((line, index) => {
+            if (index === 0) return; // Skip header
+            const cols = line.split('\t').map(s => s.trim());
+            const [day, open, close, isRegular, isCustom, isHidden] = cols;
+            
+            // Skip hidden entries
+            if (isHidden && isHidden.toLowerCase() === 'true') return;
+
+            if (day && open && close) {
+                const entry = { 
+                    day, 
+                    open: formatTime(open), 
+                    close: formatTime(close) 
+                };
+                if (isRegular && isRegular.toLowerCase() === 'true') {
+                    hoursData.regular.push(entry);
+                } else if (isCustom && isCustom.toLowerCase() === 'true') {
+                    hoursData.custom.push(entry);
+                }
+            }
+        });
+
+        // Parse Season
+        const seasonLines = seasonTSV.split('\n').filter(line => line.trim() !== '');
+        let seasonData = null;
+        if (seasonLines.length > 1) {
+            const cols = seasonLines[1].split('\t').map(s => s.trim());
+            const [openDate, closeDate] = cols;
+            seasonData = { openDate, closeDate };
+        }
+
         // Generate the new data string for comparison
-        const newDataString = `const MENU_DATA = ${JSON.stringify(menuData, null, 4)};\n\nconst ANNOUNCEMENT_DATA = ${JSON.stringify(announcementData, null, 4)};`;
+        const newDataString = `const MENU_DATA = ${JSON.stringify(menuData, null, 4)};\n\nconst ANNOUNCEMENTS_DATA = ${JSON.stringify(announcementsData, null, 4)};\n\nconst HOURS_DATA = ${JSON.stringify(hoursData, null, 4)};\n\nconst SEASON_DATA = ${JSON.stringify(seasonData, null, 4)};`;
 
         // Check if file exists and compare content
         let shouldUpdate = true;

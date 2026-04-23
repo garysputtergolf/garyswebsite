@@ -235,33 +235,116 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Announcement Bar Logic
+    // Announcement & Season Status Logic
     const announcementBar = document.getElementById('announcement-bar');
     const announcementText = document.getElementById('announcement-text');
-    if (typeof ANNOUNCEMENT_DATA !== 'undefined' && ANNOUNCEMENT_DATA && announcementBar && announcementText) {
+    
+    function updateAnnouncement() {
+        if (!announcementBar || !announcementText) return;
+
         const now = new Date();
-        const start = new Date(ANNOUNCEMENT_DATA.startDate);
-        const end = new Date(ANNOUNCEMENT_DATA.endDate);
-        
-        if (now >= start && now <= end) {
-            announcementText.textContent = ANNOUNCEMENT_DATA.text;
+        let activeAnnouncement = null;
+
+        // 1. Check Manual Announcements
+        if (typeof ANNOUNCEMENTS_DATA !== 'undefined' && ANNOUNCEMENTS_DATA) {
+            const start = new Date(ANNOUNCEMENTS_DATA.startDate);
+            const end = new Date(ANNOUNCEMENTS_DATA.endDate);
+            if (now >= start && now <= end) {
+                activeAnnouncement = ANNOUNCEMENTS_DATA.text;
+            }
+        }
+
+        // 2. Check Season Status (if no manual announcement)
+        if (!activeAnnouncement && typeof SEASON_DATA !== 'undefined' && SEASON_DATA) {
+            const openDate = new Date(SEASON_DATA.openDate);
+            const closeDate = new Date(SEASON_DATA.closeDate);
+            
+            if (now < openDate) {
+                const openStr = openDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                activeAnnouncement = `Closed for the season. Join us for our 2026 opening on ${openStr}!`;
+            } else if (now > closeDate) {
+                activeAnnouncement = "Closed for the season. See you next year!";
+            }
+        }
+
+        if (activeAnnouncement) {
+            announcementText.textContent = activeAnnouncement;
             announcementBar.style.display = 'block';
             document.body.classList.add('announcement-active');
             
             // Add padding to body so the fixed header isn't covered
-            document.body.style.paddingTop = announcementBar.offsetHeight + 'px';
-            
-            const updateHeaderTop = () => {
+            const updateLayout = () => {
+                const barHeight = announcementBar.offsetHeight;
+                document.body.style.paddingTop = barHeight + 'px';
                 if (header) {
-                    const barHeight = announcementBar.offsetHeight;
                     const scrollY = Math.max(0, window.scrollY);
                     header.style.top = Math.max(0, barHeight - scrollY) + 'px';
                 }
             };
-            window.addEventListener('scroll', updateHeaderTop, { passive: true });
-            setTimeout(updateHeaderTop, 100);
+            
+            window.addEventListener('scroll', updateLayout, { passive: true });
+            window.addEventListener('resize', updateLayout);
+            setTimeout(updateLayout, 100);
+        } else {
+            announcementBar.style.display = 'none';
+            document.body.classList.remove('announcement-active');
+            document.body.style.paddingTop = '0';
+            if (header) header.style.top = '0';
         }
     }
+
+    updateAnnouncement();
+
+    // Dynamic Hours Rendering (Grouped & Compact)
+    function renderHours() {
+        const footerHoursContainer = document.getElementById('footer-hours-container');
+        if (typeof HOURS_DATA === 'undefined' || !HOURS_DATA || !footerHoursContainer) return;
+        
+        const groupEntries = (entries) => {
+            if (!entries || entries.length === 0) return [];
+            const groups = [];
+            let current = null;
+            
+            entries.forEach(entry => {
+                const timeStr = entry.open === 'Closed' ? 'Closed' : `${entry.open} - ${entry.close}`;
+                if (current && current.time === timeStr) {
+                    current.endDay = entry.day;
+                } else {
+                    if (current) groups.push(current);
+                    current = { startDay: entry.day, endDay: entry.day, time: timeStr };
+                }
+            });
+            if (current) groups.push(current);
+            return groups;
+        };
+
+        const regularGroups = groupEntries(HOURS_DATA.regular);
+        let hoursHtml = '<ul class="hours-list compact">';
+        
+        // Add Season Dates at the top
+        if (typeof SEASON_DATA !== 'undefined' && SEASON_DATA) {
+            const openDate = new Date(SEASON_DATA.openDate);
+            const closeDate = new Date(SEASON_DATA.closeDate);
+            const openStr = openDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            const closeStr = closeDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            hoursHtml += `<li class="season-dates"><span class="day">2026 Season:</span> <span class="time">${openStr} - ${closeStr}</span></li>`;
+        }
+
+        regularGroups.forEach(g => {
+            const dayLabel = g.startDay === g.endDay ? g.startDay : `${g.startDay.substring(0, 3)} - ${g.endDay.substring(0, 3)}`;
+            hoursHtml += `<li><span class="day">${dayLabel}:</span> <span class="time">${g.time}</span></li>`;
+        });
+
+        if (HOURS_DATA.custom.length > 0) {
+            HOURS_DATA.custom.forEach(entry => {
+                hoursHtml += `<li class="holiday-hours"><span class="day">${entry.day}:</span> <span class="time">${entry.open} - ${entry.close}</span></li>`;
+            });
+        }
+        hoursHtml += '</ul>';
+        footerHoursContainer.innerHTML = hoursHtml;
+    }
+
+    renderHours();
 
     // Safari Overscroll "Backing Blocks" Implementation
     // Creates fixed blocks behind the content to handle top/bottom spill colors

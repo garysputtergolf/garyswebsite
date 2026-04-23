@@ -141,6 +141,7 @@ ul {
     font-size: 1.1rem;
 }
 
+
 /* Typography */
 h1,
 h2,
@@ -194,17 +195,16 @@ h4 {
     z-index: 1000;
     transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     padding: 0.4rem 0;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    box-shadow: var(--shadow-sm);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.8); /* More transparent */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid var(--white);
 }
 
 #main-header.scrolled {
-    box-shadow: var(--shadow-md);
     padding: 0.2rem 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98); /* Solid on scroll */
 }
 
 .header-content {
@@ -215,9 +215,8 @@ h4 {
 
 .logo img {
     height: 70px;
-    /* Adjust based on logo aspect ratio */
     width: auto;
-    transition: height 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 #main-header.scrolled .logo img {
@@ -811,8 +810,8 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.5fr 0.6fr 1.2fr 1fr;
+    gap: 2rem;
     align-items: flex-start;
 }
 
@@ -823,7 +822,7 @@ footer {
 }
 
 .brand-col .footer-logo-img {
-    height: 90px;
+    height: 75px; /* Reduced from 90px */
     width: auto;
     transition: var(--transition);
 }
@@ -847,9 +846,15 @@ footer {
     margin: 0;
 }
 
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
 .copyright {
     font-size: 0.85rem;
-    margin-top: 1.5rem;
     color: rgba(242, 239, 233, 0.6);
 }
 
@@ -898,31 +903,25 @@ footer {
 
 .footer-socials {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
     margin-top: 1rem;
 }
 
 .footer-socials a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
     color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 600;
+    font-size: 1.5rem;
     transition: var(--transition);
 }
 
 .footer-socials a:hover {
-    background: var(--secondary-color);
-    color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
     .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
     }
 
     .footer-col {
@@ -1825,4 +1824,49 @@ footer {
     #menu-section {
         padding-top: 0.5rem;
     }
+}
+/* Hours List Styling */
+.hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hours-list.compact li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.15rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hours-list .day {
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.hours-list .time {
+    color: var(--white);
+    opacity: 0.9;
+}
+
+.hours-list .holiday-hours {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    opacity: 0.7;
+    margin-top: 0.2rem;
+}
+
+.hours-list .season-dates {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15) !important;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.3rem !important;
+}
+
+.hours-list .season-dates .day {
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
 }
