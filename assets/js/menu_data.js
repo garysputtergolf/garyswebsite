@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-04-23T23:24:49.488Z
+// Updated: 2026-04-23T23:43:02.918Z
 
 const MENU_DATA = {
     "activities": {
