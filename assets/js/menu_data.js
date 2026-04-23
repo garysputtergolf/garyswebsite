@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-04-23T16:28:30.660Z
+// Updated: 2026-04-23T17:54:14.541Z
 
 const MENU_DATA = {
     "activities": {
@@ -104,7 +104,6 @@ const MENU_DATA = {
         "sections": [
             {
                 "title": "Combo Meals",
-                "note": "Includes fries & soda",
                 "items": [
                     {
                         "name": "Jiffy Pup Combo",
@@ -142,7 +141,8 @@ const MENU_DATA = {
                         "description": "",
                         "popular": false
                     }
-                ]
+                ],
+                "note": "Includes fries & soda"
             },
             {
                 "title": "Sandwiches & More",
@@ -325,25 +325,25 @@ const MENU_DATA = {
                 "items": [
                     {
                         "name": "Soft Serve (Reg)",
-                        "price": "2.50",
+                        "price": "2.5",
                         "description": "",
                         "popular": false
                     },
                     {
                         "name": "Soft Serve (Lg)",
-                        "price": "3.50",
+                        "price": "3.5",
                         "description": "",
                         "popular": false
                     },
                     {
                         "name": "Hand Dipped (Reg)",
-                        "price": "3.50",
+                        "price": "3.5",
                         "description": "",
                         "popular": false
                     },
                     {
                         "name": "Hand Dipped (Lg)",
-                        "price": "4.50",
+                        "price": "4.5",
                         "description": "",
                         "popular": false
                     },
