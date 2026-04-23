@@ -98,17 +98,31 @@ async function refreshData() {
             };
         }
 
-        // Generate JS file content
-        const fileContent = `// AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
+        // Generate the new data string for comparison
+        const newDataString = `const MENU_DATA = ${JSON.stringify(menuData, null, 4)};\n\nconst ANNOUNCEMENT_DATA = ${JSON.stringify(announcementData, null, 4)};`;
+
+        // Check if file exists and compare content
+        let shouldUpdate = true;
+        if (fs.existsSync(OUTPUT_FILE)) {
+            const currentContent = fs.readFileSync(OUTPUT_FILE, 'utf8');
+            // Extract just the data parts (ignoring the timestamp line)
+            const currentDataMatch = currentContent.match(/\n\n(const MENU_DATA = [\s\S]+)/);
+            if (currentDataMatch && currentDataMatch[1].trim() === newDataString.trim()) {
+                shouldUpdate = false;
+            }
+        }
+
+        if (shouldUpdate) {
+            const fileContent = `// AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
 // Updated: ${new Date().toISOString()}
 
-const MENU_DATA = ${JSON.stringify(menuData, null, 4)};
-
-const ANNOUNCEMENT_DATA = ${JSON.stringify(announcementData, null, 4)};
+${newDataString}
 `;
-
-        fs.writeFileSync(OUTPUT_FILE, fileContent);
-        console.log('Successfully updated menu_data.js');
+            fs.writeFileSync(OUTPUT_FILE, fileContent);
+            console.log('Successfully updated menu_data.js');
+        } else {
+            console.log('No changes detected in menu or announcement data. Skipping update.');
+        }
 
     } catch (error) {
         console.error('Error refreshing data:', error);
