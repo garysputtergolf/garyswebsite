@@ -920,13 +920,20 @@ footer {
 
 @media (max-width: 768px) {
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
     .footer-col {
         align-items: center;
+        text-align: center;
         gap: 0.5rem;
+    }
+
+    .hours-col {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
     }
 
     .links-col,
@@ -942,7 +949,7 @@ footer {
     }
 
     footer {
-        padding: 2rem 0;
+        padding: 3rem 0 2rem;
     }
 }
 
@@ -1835,6 +1842,7 @@ footer {
 .hours-list.compact li {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     padding: 0.15rem 0;
     font-size: 0.85rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
