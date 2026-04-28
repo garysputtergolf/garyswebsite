@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-04-23T23:43:02.918Z
+// Updated: 2026-04-28T23:00:22.462Z
 
 const MENU_DATA = {
     "activities": {
@@ -383,50 +383,10 @@ const MENU_DATA = {
     }
 };
 
-const ANNOUNCEMENTS_DATA = {
-    "text": "OPENING SOON!! The 2026 season starts on May 17th @ 11am",
-    "startDate": "4/23/2026",
-    "endDate": "5/17/2026"
-};
+const ANNOUNCEMENTS_DATA = null;
 
 const HOURS_DATA = {
-    "regular": [
-        {
-            "day": "Sunday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
-        },
-        {
-            "day": "Monday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
-        },
-        {
-            "day": "Tuesday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
-        },
-        {
-            "day": "Wednesday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
-        },
-        {
-            "day": "Thursday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
-        },
-        {
-            "day": "Friday",
-            "open": "11:00 AM",
-            "close": "6:00 PM"
-        },
-        {
-            "day": "Saturday",
-            "open": "9:00 PM",
-            "close": "11:00 PM"
-        }
-    ],
+    "regular": [],
     "custom": []
 };
 
