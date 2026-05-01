@@ -1,6 +1,6 @@
-# Getaway at Gary's
+# Gary's Family Resort
 
-A family tradition since 1961 in Coudersport, PA. This repository contains the source code for the "Getaway at Gary's" website, showcasing the fun, food, and camping experiences offered in Potter County. 
+A family tradition since 1961 in Coudersport, PA. This repository contains the source code for the "Gary's Family Resort" website, showcasing the fun, food, and camping experiences offered in Potter County. 
 
 ## Features
 - **Responsive Design**: Modern and functional UI that works perfectly across all devices.
@@ -10,6 +10,7 @@ A family tradition since 1961 in Coudersport, PA. This repository contains the s
 
 
 ## Contact
-- **Website**: [getawayatgarys.com](https://getawayatgarys.com)
+- **Website**: [garysfamilyresort.com](https://garysfamilyresort.com)
 - **Instagram**: [@garysputtergolfandjiffypup](https://www.instagram.com/garysputtergolfandjiffypup/)
+- **Facebook**: [Gary's Family Resort](https://www.facebook.com/profile.php?id=100063710003075)
 - **Email**: garysputtergolf@gmail.com
