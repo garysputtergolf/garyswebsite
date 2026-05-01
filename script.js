@@ -358,4 +358,21 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.body.prepend(topBacking);
     document.body.prepend(bottomBacking);
+
+    // Clean URL Hash Handling
+    // If a user lands on the page with a hash (e.g. from an external link), 
+    // we jump to it and then clear the hash from the address bar.
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            // Ensure scroll happens after full load for accuracy
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Remove the hash from the URL without triggering a scroll
+                    history.replaceState(null, null, window.location.pathname);
+                }, 100);
+            });
+        }
+    }
 });
