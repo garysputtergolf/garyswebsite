@@ -18,6 +18,8 @@ jobs:
       - name: Fetch Instagram Data
         env:
           INSTAGRAMACCESSTOKEN: ${{ secrets.INSTAGRAMACCESSTOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           ./scripts/fetch_instagram.sh
 

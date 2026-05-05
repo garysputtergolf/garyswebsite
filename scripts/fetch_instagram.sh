@@ -57,3 +57,32 @@ echo "$response" | jq -c '.data | limit(4; .[])' | while read -r post; do
 done
 
 echo "Successfully wrote assets/instagram_feed.json"
+
+# --- Token Renewal Section ---
+# Instagram long-lived tokens expire after 60 days. 
+# They can be refreshed if they are at least 24 hours old.
+# We automate this here to keep the token alive indefinitely.
+
+if [ -n "$GH_TOKEN" ]; then
+  echo "Attempting to refresh Instagram access token..."
+  
+  # Fetch the refreshed token
+  RESPONSE=$(curl -s -X GET "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$INSTAGRAMACCESSTOKEN")
+
+  # Extract the new token using jq
+  NEW_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token // empty')
+
+  # Check if we got a valid token back before overwriting
+  if [ -n "$NEW_TOKEN" ] && [ "$NEW_TOKEN" != "null" ]; then
+    # Use GitHub CLI to update the secret
+    # GITHUB_REPOSITORY is automatically set by GitHub Actions
+    echo "$NEW_TOKEN" | gh secret set INSTAGRAMACCESSTOKEN --repo "$GITHUB_REPOSITORY"
+    echo "Successfully refreshed and updated the Instagram access token secret."
+  else
+    # If it's not time to refresh yet, Instagram returns an error or the same token.
+    # We don't want to fail the whole script, so we just log it.
+    echo "Token renewal skipped or failed. Response: $RESPONSE"
+  fi
+else
+  echo "GH_TOKEN not set. Skipping token renewal step."
+fi
