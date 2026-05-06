@@ -374,5 +374,62 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 100);
             });
         }
+    // Dynamic Structured Data Injection (SEO)
+    // This pulls business hours directly from your Google Sheet data
+    function injectStructuredData() {
+        if (typeof HOURS_DATA === 'undefined' || !HOURS_DATA) return;
+
+        // Convert "11:00 AM" format to ISO "HH:mm" for Schema.org
+        const formatToISO = (t) => {
+            if (!t || t === 'Closed') return null;
+            const parts = t.split(' ');
+            if (parts.length < 2) return null;
+            let [hours, minutes] = parts[0].split(':');
+            const modifier = parts[1];
+            
+            if (hours === '12') hours = '00';
+            if (modifier === 'PM') hours = parseInt(hours, 10) + 12;
+            return `${hours.toString().padStart(2, '0')}:${minutes}`;
+        };
+
+        const spec = HOURS_DATA.regular.map(entry => {
+            const opens = formatToISO(entry.open);
+            const closes = formatToISO(entry.close);
+            
+            if (!opens || !closes) return null;
+
+            return {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": entry.day,
+                "opens": opens,
+                "closes": closes
+            };
+        }).filter(item => item !== null);
+
+        const jsonLd = {
+            "@context": "https://schema.org",
+            "@type": "Resort",
+            "name": "Gary's Family Resort",
+            "image": "https://www.garysfamilyresort.com/assets/images/logo.png",
+            "url": "https://www.garysfamilyresort.com",
+            "telephone": "+1-814-274-9401",
+            "email": "garysputtergolf@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "156 Cherry Springs Road",
+                "addressLocality": "Coudersport",
+                "addressRegion": "PA",
+                "postalCode": "16915",
+                "addressCountry": "US"
+            },
+            "openingHoursSpecification": spec
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(jsonLd);
+        document.head.appendChild(script);
     }
+    
+    injectStructuredData();
 });
