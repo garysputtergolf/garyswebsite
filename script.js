@@ -374,6 +374,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 100);
             });
         }
+    }
+
     // Dynamic Structured Data Injection (SEO)
     // This pulls business hours directly from your Google Sheet data
     function injectStructuredData() {
