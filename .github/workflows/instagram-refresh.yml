@@ -2,7 +2,7 @@ name: Refresh Instagram Feed
 
 on:
   schedule:
-    - cron: '0 * * * *' # Run hourly
+    - cron: '5 * * * *' # Run hourly at 5 minutes past the hour
   workflow_dispatch: # Allow manual triggers
 
 permissions:
