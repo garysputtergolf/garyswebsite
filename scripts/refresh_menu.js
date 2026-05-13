@@ -1,6 +1,4 @@
 const fs = require('fs');
-const https = require('https');
-const urlModule = require('url');
 
 const MENU_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?output=tsv';
 const ANNOUNCEMENTS_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?gid=1262611615&single=true&output=tsv';
@@ -8,23 +6,35 @@ const HOURS_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSm
 const SEASON_TSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNgWYHSmUyj_wZ1wz33fVdIZEWWVw1RJfDAFg-U7yoIccaVTTbT2zH1xVv5m_kR9dPQYI04EiN00wR/pub?gid=915434937&single=true&output=tsv';
 const OUTPUT_FILE = './assets/js/menu_data.js';
 
-function fetchTSV(url) {
-    return new Promise((resolve, reject) => {
-        function get(url) {
-            https.get(url, (res) => {
-                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                    // Follow redirect
-                    return get(urlModule.resolve(url, res.headers.location));
-                }
-                
-                let data = '';
-                res.on('data', (chunk) => data += chunk);
-                res.on('end', () => resolve(data));
-            }).on('error', reject);
+/**
+ * Fetches TSV data from a URL with retry logic.
+ */
+async function fetchTSV(url, retries = 3, timeout = 10000) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeout);
+            
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(id);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            return await response.text();
+        } catch (error) {
+            const isLastAttempt = i === retries - 1;
+            if (isLastAttempt) {
+                throw error;
+            }
+            const delay = Math.pow(2, i) * 1000;
+            console.warn(`Fetch failed (attempt ${i + 1}/${retries}). Retrying in ${delay}ms... Error: ${error.message}`);
+            await new Promise(resolve => setTimeout(resolve, delay));
         }
-        get(url);
-    });
+    }
 }
+
 
 async function refreshData() {
     try {

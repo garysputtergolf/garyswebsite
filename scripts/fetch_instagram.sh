@@ -8,19 +8,47 @@ if [ -z "$INSTAGRAMACCESSTOKEN" ]; then
   exit 1
 fi
 
+# Helper function for curl with retries
+fetch_with_retry() {
+  local url="$1"
+  local output="$2"
+  local retries=3
+  local wait=2
+  local count=0
+
+  while [ $count -lt $retries ]; do
+    if [ -n "$output" ]; then
+      curl -s -f -o "$output" "$url"
+      if [ $? -eq 0 ]; then return 0; fi
+    else
+      local res
+      res=$(curl -s -f "$url")
+      if [ $? -eq 0 ] && [ -n "$res" ]; then
+        # For Instagram API, check for internal errors in JSON
+        local err
+        err=$(echo "$res" | jq -r '.error.message // empty' 2>/dev/null)
+        if [ -z "$err" ]; then
+          echo "$res"
+          return 0
+        fi
+      fi
+    fi
+
+    count=$((count + 1))
+    if [ $count -lt $retries ]; then
+      echo "Attempt $count failed. Retrying in ${wait}s..." >&2
+      sleep $wait
+      wait=$((wait * 2))
+    fi
+  done
+  return 1
+}
+
 echo "Fetching Instagram feed..."
-response=$(curl -s "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${INSTAGRAMACCESSTOKEN}")
+response=$(fetch_with_retry "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${INSTAGRAMACCESSTOKEN}")
 
-# Check if curl failed
 if [ $? -ne 0 ]; then
-  echo "Error: Failed to fetch from Instagram API"
-  exit 1
-fi
-
-# Check if the response contains an error
-error=$(echo "$response" | jq -r '.error.message // empty')
-if [ ! -z "$error" ]; then
-  echo "Instagram API Error: $error"
+  echo "Error: Failed to fetch from Instagram API after multiple attempts"
   exit 1
 fi
 
@@ -53,7 +81,7 @@ echo "$response" | jq -c '.data | limit(4; .[])' | while read -r post; do
     url=$(echo "$post" | jq -r '.media_url')
   fi
   # Download and save as id.jpg
-  curl -s -o "assets/ig_media/${id}.jpg" "$url"
+  fetch_with_retry "$url" "assets/ig_media/${id}.jpg"
 done
 
 echo "Successfully wrote assets/instagram_feed.json"
@@ -67,10 +95,10 @@ if [ -n "$GH_TOKEN" ]; then
   echo "Attempting to refresh Instagram access token..."
   
   # Fetch the refreshed token
-  RESPONSE=$(curl -s -X GET "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$INSTAGRAMACCESSTOKEN")
+  RESPONSE=$(fetch_with_retry "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$INSTAGRAMACCESSTOKEN")
 
   # Extract the new token using jq
-  NEW_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token // empty')
+  NEW_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token // empty' 2>/dev/null)
 
   # Check if we got a valid token back before overwriting
   if [ -n "$NEW_TOKEN" ] && [ "$NEW_TOKEN" != "null" ]; then
