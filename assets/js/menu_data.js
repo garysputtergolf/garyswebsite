@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-04-28T23:54:35.168Z
+// Updated: 2026-05-14T17:47:37.637Z
 
 const MENU_DATA = {
     "activities": {
@@ -394,37 +394,22 @@ const HOURS_DATA = {
         {
             "day": "Sunday",
             "open": "11:00 AM",
-            "close": "10:00 PM"
+            "close": "8:00 PM"
         },
         {
             "day": "Monday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
+            "open": "4:00 PM",
+            "close": "8:00 PM"
         },
         {
             "day": "Tuesday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
+            "open": "4:00 PM",
+            "close": "8:00 PM"
         },
         {
             "day": "Wednesday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
-        },
-        {
-            "day": "Thursday",
-            "open": "11:00 AM",
-            "close": "10:00 PM"
-        },
-        {
-            "day": "Friday",
-            "open": "11:00 AM",
-            "close": "6:00 PM"
-        },
-        {
-            "day": "Saturday",
-            "open": "9:00 PM",
-            "close": "11:00 PM"
+            "open": "4:00 PM",
+            "close": "8:00 PM"
         }
     ],
     "custom": []
