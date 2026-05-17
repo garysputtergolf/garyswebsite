@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-05-16T21:10:45.121Z
+// Updated: 2026-05-17T04:38:13.005Z
 
 const MENU_DATA = {
     "activities": {
@@ -384,9 +384,9 @@ const MENU_DATA = {
 };
 
 const ANNOUNCEMENTS_DATA = {
-    "text": "OPENING SOON!! The 2026 season starts on May 17th @ 11am",
-    "startDate": "4/23/2026",
-    "endDate": "5/17/2026"
+    "text": "We are officially open for the 2026 Summer Season!!",
+    "startDate": "5/17/2026",
+    "endDate": "6/1/2026"
 };
 
 const HOURS_DATA = {
