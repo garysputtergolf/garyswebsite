@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-05-17T04:38:13.005Z
+// Updated: 2026-05-18T20:19:34.647Z
 
 const MENU_DATA = {
     "activities": {
@@ -394,7 +394,7 @@ const HOURS_DATA = {
         {
             "day": "Sunday",
             "open": "11:00 AM",
-            "close": "8:00 PM"
+            "close": "10:00 PM"
         },
         {
             "day": "Monday",
@@ -420,6 +420,16 @@ const HOURS_DATA = {
             "day": "Friday",
             "open": "2:00 PM",
             "close": "6:00 PM"
+        },
+        {
+            "day": "Saturday",
+            "open": "9:00 PM",
+            "close": "11:00 PM"
+        },
+        {
+            "day": "Memorial Day",
+            "open": "11:00 AM",
+            "close": "8:00 PM"
         }
     ],
     "custom": []
