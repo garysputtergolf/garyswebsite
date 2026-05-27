@@ -1878,3 +1878,170 @@ footer {
     letter-spacing: 0.5px;
     font-size: 0.75rem;
 }
+
+/* =========================================
+   Privacy Policy Page Styles
+   ========================================= */
+.privacy-page .page-header {
+    position: relative;
+    padding: 8rem 0 2rem;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(26, 63, 23, 0.85)), url('assets/images/ourHistory.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    overflow: hidden;
+}
+
+/* Fallback for subdirectories since url path is relative */
+.privacy-page.subpage .page-header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(26, 63, 23, 0.85)), url('../assets/images/ourHistory.jpg');
+}
+
+.privacy-page .page-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    color: var(--white);
+    font-family: var(--font-heading);
+}
+
+.privacy-page .page-header .subtitle {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-subheading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+.privacy-page .page-header p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-narrow {
+    max-width: 1000px !important;
+}
+
+.privacy-page .privacy-content {
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+}
+
+.policy-card {
+    background: var(--white);
+    padding: 3.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 3rem;
+}
+
+/* Wood grain texture overlay */
+.policy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.policy-card h2 {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--bg-light);
+    padding-bottom: 0.5rem;
+}
+
+.policy-card h2:first-of-type {
+    margin-top: 0;
+}
+
+.policy-card p {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.policy-card ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+}
+
+.policy-card li {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+.policy-card a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.policy-card a:hover {
+    color: var(--accent-color);
+}
+
+.policy-card .contact-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.policy-card .contact-list li {
+    margin-bottom: 0.8rem;
+}
+
+.announcement-active .privacy-page .page-header {
+    padding-top: 140px;
+}
+
+/* Footer bottom links */
+.footer-privacy-link {
+    color: rgba(242, 239, 233, 0.6);
+    text-decoration: none;
+    margin-left: 10px;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-privacy-link:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.footer-bottom-separator {
+    color: rgba(242, 239, 233, 0.3);
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .policy-card {
+        padding: 2.5rem 1.5rem;
+        margin: 2rem auto;
+    }
+    
+    .privacy-page .page-header h1 {
+        font-size: 2.5rem;
+    }
+}
