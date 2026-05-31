@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-05-18T20:19:34.647Z
+// Updated: 2026-05-31T18:42:46.439Z
 
 const MENU_DATA = {
     "activities": {
@@ -384,9 +384,9 @@ const MENU_DATA = {
 };
 
 const ANNOUNCEMENTS_DATA = {
-    "text": "We are officially open for the 2026 Summer Season!!",
+    "text": "We are officially open for our normal Summer hours!!",
     "startDate": "5/17/2026",
-    "endDate": "6/1/2026"
+    "endDate": "6/13/2026"
 };
 
 const HOURS_DATA = {
@@ -398,38 +398,33 @@ const HOURS_DATA = {
         },
         {
             "day": "Monday",
-            "open": "4:00 PM",
-            "close": "8:00 PM"
+            "open": "11:00 AM",
+            "close": "10:00 PM"
         },
         {
             "day": "Tuesday",
-            "open": "4:00 PM",
-            "close": "8:00 PM"
+            "open": "11:00 AM",
+            "close": "10:00 PM"
         },
         {
             "day": "Wednesday",
-            "open": "4:00 PM",
-            "close": "8:00 PM"
+            "open": "11:00 AM",
+            "close": "10:00 PM"
         },
         {
             "day": "Thursday",
-            "open": "4:00 PM",
-            "close": "8:00 PM"
+            "open": "11:00 AM",
+            "close": "10:00 PM"
         },
         {
             "day": "Friday",
-            "open": "2:00 PM",
+            "open": "11:00 AM",
             "close": "6:00 PM"
         },
         {
             "day": "Saturday",
             "open": "9:00 PM",
             "close": "11:00 PM"
-        },
-        {
-            "day": "Memorial Day",
-            "open": "11:00 AM",
-            "close": "8:00 PM"
         }
     ],
     "custom": []
@@ -437,5 +432,5 @@ const HOURS_DATA = {
 
 const SEASON_DATA = {
     "openDate": "5/17/2026",
-    "closeDate": "9/7/2026"
+    "closeDate": "9/20/2026"
 };
