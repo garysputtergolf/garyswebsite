@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-05-31T18:42:46.439Z
+// Updated: 2026-06-24T19:09:42.893Z
 
 const MENU_DATA = {
     "activities": {
@@ -33,13 +33,13 @@ const MENU_DATA = {
                 "items": [
                     {
                         "name": "Paddle Boats",
-                        "price": "6.00",
+                        "price": "7.00",
                         "description": "30 minute ride",
                         "popular": false
                     },
                     {
                         "name": "ZipLine",
-                        "price": "8.00 - 25.00",
+                        "price": "10.00 - 30.00",
                         "description": "Price varies by number of rides",
                         "popular": false
                     }
@@ -181,7 +181,7 @@ const MENU_DATA = {
                         "name": "Cheeseburger",
                         "price": "4.59",
                         "description": "",
-                        "popular": false
+                        "popular": true
                     },
                     {
                         "name": "Deluxe Burger",
@@ -217,7 +217,7 @@ const MENU_DATA = {
                         "name": "Chicken Tenders",
                         "price": "6.69",
                         "description": "",
-                        "popular": false
+                        "popular": true
                     },
                     {
                         "name": "Wraps w/ Chips",
@@ -384,9 +384,9 @@ const MENU_DATA = {
 };
 
 const ANNOUNCEMENTS_DATA = {
-    "text": "We are officially open for our normal Summer hours!!",
-    "startDate": "5/17/2026",
-    "endDate": "6/13/2026"
+    "text": "Join us for FIREWORKS at Gary's on July 5th @ 9:45pm!!!",
+    "startDate": "6/24/2026",
+    "endDate": "7/6/2026"
 };
 
 const HOURS_DATA = {
@@ -424,6 +424,11 @@ const HOURS_DATA = {
         {
             "day": "Saturday",
             "open": "9:00 PM",
+            "close": "11:00 PM"
+        },
+        {
+            "day": "Independance Day",
+            "open": "11:00 AM",
             "close": "11:00 PM"
         }
     ],
