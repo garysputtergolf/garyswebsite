@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "image": "https://www.garysfamilyresort.com/assets/images/logo.png",
             "url": "https://www.garysfamilyresort.com",
             "telephone": "+1-814-274-9401",
-            "email": "garysputtergolf@gmail.com",
+            "email": "garysfamilyresort@gmail.com",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "156 Cherry Springs Road",
