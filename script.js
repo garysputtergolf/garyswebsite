@@ -340,6 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 hoursHtml += `<li class="holiday-hours"><span class="day">${entry.day}:</span> <span class="time">${entry.open} - ${entry.close}</span></li>`;
             });
         }
+
+        if (HOURS_DATA.zipline && HOURS_DATA.zipline.length > 0) {
+            HOURS_DATA.zipline.forEach(entry => {
+                hoursHtml += `<li class="zipline-hours"><span class="day">${entry.day}:</span> <span class="time">${entry.open} - ${entry.close}</span></li>`;
+            });
+        }
         hoursHtml += '</ul>';
         footerHoursContainer.innerHTML = hoursHtml;
     }

@@ -118,7 +118,8 @@ async function refreshData() {
         const hoursLines = hoursTSV.split('\n').filter(line => line.trim() !== '');
         const hoursData = {
             regular: [],
-            custom: []
+            custom: [],
+            zipline: []
         };
         const formatTime = (timeStr) => {
             if (!timeStr) return '';
@@ -144,6 +145,8 @@ async function refreshData() {
                     hoursData.regular.push(entry);
                 } else if (isCustom && isCustom.toLowerCase() === 'true') {
                     hoursData.custom.push(entry);
+                } else if (day.toLowerCase().includes('zipline')) {
+                    hoursData.zipline.push(entry);
                 }
             }
         });

@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-06-24T19:09:42.893Z
+// Updated: 2026-06-28T21:58:27.371Z
 
 const MENU_DATA = {
     "activities": {
@@ -432,7 +432,14 @@ const HOURS_DATA = {
             "close": "11:00 PM"
         }
     ],
-    "custom": []
+    "custom": [],
+    "zipline": [
+        {
+            "day": "Zipline Hours (Sun-Fri)",
+            "open": "1:00 PM",
+            "close": "6:00 PM"
+        }
+    ]
 };
 
 const SEASON_DATA = {
