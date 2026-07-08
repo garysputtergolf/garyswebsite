@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-06-28T21:58:27.371Z
+// Updated: 2026-07-08T13:57:43.252Z
 
 const MENU_DATA = {
     "activities": {
@@ -384,9 +384,9 @@ const MENU_DATA = {
 };
 
 const ANNOUNCEMENTS_DATA = {
-    "text": "Join us for FIREWORKS at Gary's on July 5th @ 9:45pm!!!",
-    "startDate": "6/24/2026",
-    "endDate": "7/6/2026"
+    "text": "Join us for FIREWORKS at Gary's on July 12th @ 9:45pm!!!",
+    "startDate": "7/8/2026",
+    "endDate": "7/15/2026"
 };
 
 const HOURS_DATA = {
