@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-07-08T13:57:43.252Z
+// Updated: 2026-07-12T23:50:55.042Z
 
 const MENU_DATA = {
     "activities": {
@@ -424,11 +424,6 @@ const HOURS_DATA = {
         {
             "day": "Saturday",
             "open": "9:00 PM",
-            "close": "11:00 PM"
-        },
-        {
-            "day": "Independance Day",
-            "open": "11:00 AM",
             "close": "11:00 PM"
         }
     ],
