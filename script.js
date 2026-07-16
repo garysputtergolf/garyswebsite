@@ -127,6 +127,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     const namePrefix = nameParts.length > 0 ? nameParts.join(' ') + ' ' : '';
                     const starIcon = isPopular ? `<span class="star-wrapper"><i class="ph ph-fill ph-star" style="color: var(--secondary-color); margin-left: 5px;" title="Fan Favorite"></i></span>` : '';
 
+                    let ziplineHoursHtml = '';
+                    if (item.name.toLowerCase() === 'zipline' && typeof HOURS_DATA !== 'undefined' && HOURS_DATA.zipline && HOURS_DATA.zipline.length > 0) {
+                        ziplineHoursHtml = `<div class="zipline-hours-container">`;
+                        HOURS_DATA.zipline.forEach(entry => {
+                            let dayLabel = entry.day;
+                            if (dayLabel.toLowerCase().includes('zipline hours')) {
+                                const match = dayLabel.match(/\(([^)]+)\)/);
+                                if (match) {
+                                    dayLabel = match[1];
+                                } else {
+                                    dayLabel = dayLabel.replace(/zipline hours/gi, '').trim();
+                                }
+                            }
+                            ziplineHoursHtml += `
+                            <div class="zipline-hours-badge">
+                                <i class="ph ph-clock"></i>
+                                <span class="hours-label">Zipline Hours (${dayLabel}):</span>
+                                <span class="hours-time">${entry.open} - ${entry.close}</span>
+                            </div>`;
+                        });
+                        ziplineHoursHtml += `</div>`;
+                    }
+
                     html += `
                     <li class="menu-item">
                         <div class="item-main">
@@ -135,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="item-price">${price}</span>
                         </div>
                         ${item.description ? `<span class="item-desc">${item.description}</span>` : ''}
+                        ${ziplineHoursHtml}
                     </li>
                     `;
                 });
