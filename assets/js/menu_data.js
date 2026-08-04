@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-07-12T23:50:55.042Z
+// Updated: 2026-08-04T20:50:52.990Z
 
 const MENU_DATA = {
     "activities": {
@@ -280,12 +280,6 @@ const MENU_DATA = {
                     {
                         "name": "Funnel Cake Fries",
                         "price": "3.59",
-                        "description": "",
-                        "popular": false
-                    },
-                    {
-                        "name": "Nachos & Cheese",
-                        "price": "3.99",
                         "description": "",
                         "popular": false
                     }
