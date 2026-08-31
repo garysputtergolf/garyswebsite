@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-08-25T13:46:16.943Z
+// Updated: 2026-08-31T20:38:13.314Z
 
 const MENU_DATA = {
     "activities": {
@@ -378,9 +378,9 @@ const MENU_DATA = {
 };
 
 const ANNOUNCEMENTS_DATA = {
-    "text": "Join us for FIREWORKS at Gary's on July 12th @ 9:45pm!!!",
-    "startDate": "7/8/2026",
-    "endDate": "7/15/2026"
+    "text": "Come to Gary's before we close on September 13th!!",
+    "startDate": "8/31/2026",
+    "endDate": "9/30/2026"
 };
 
 const HOURS_DATA = {
@@ -419,6 +419,11 @@ const HOURS_DATA = {
             "day": "Saturday",
             "open": "8:00 PM",
             "close": "11:00 PM"
+        },
+        {
+            "day": "Labor Day",
+            "open": "11:00 AM",
+            "close": "8:00 PM"
         },
         {
             "day": "Zipline Hours (Sun-Fri)",
