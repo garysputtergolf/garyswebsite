@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-08-31T20:38:13.314Z
+// Updated: 2026-09-03T00:28:50.920Z
 
 const MENU_DATA = {
     "activities": {
@@ -437,5 +437,5 @@ const HOURS_DATA = {
 
 const SEASON_DATA = {
     "openDate": "5/17/2026",
-    "closeDate": "9/14/2026"
+    "closeDate": "9/13/2026"
 };
