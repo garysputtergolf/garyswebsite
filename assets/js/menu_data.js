@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-09-03T00:28:50.920Z
+// Updated: 2026-09-14T19:00:10.282Z
 
 const MENU_DATA = {
     "activities": {
@@ -388,27 +388,27 @@ const HOURS_DATA = {
         {
             "day": "Sunday",
             "open": "11:00 AM",
-            "close": "8:00 PM"
+            "close": "6:00 PM"
         },
         {
             "day": "Monday",
             "open": "11:00 AM",
-            "close": "8:00 PM"
+            "close": "6:00 PM"
         },
         {
             "day": "Tuesday",
             "open": "11:00 AM",
-            "close": "8:00 PM"
+            "close": "6:00 PM"
         },
         {
             "day": "Wednesday",
             "open": "11:00 AM",
-            "close": "8:00 PM"
+            "close": "6:00 PM"
         },
         {
             "day": "Thursday",
             "open": "11:00 AM",
-            "close": "8:00 PM"
+            "close": "6:00 PM"
         },
         {
             "day": "Friday",
@@ -416,19 +416,9 @@ const HOURS_DATA = {
             "close": "6:00 PM"
         },
         {
-            "day": "Saturday",
-            "open": "8:00 PM",
-            "close": "11:00 PM"
-        },
-        {
             "day": "Labor Day",
             "open": "11:00 AM",
             "close": "8:00 PM"
-        },
-        {
-            "day": "Zipline Hours (Sun-Fri)",
-            "open": "1:00 PM",
-            "close": "6:00 PM"
         }
     ],
     "custom": [],
@@ -437,5 +427,5 @@ const HOURS_DATA = {
 
 const SEASON_DATA = {
     "openDate": "5/17/2026",
-    "closeDate": "9/13/2026"
+    "closeDate": "10/17/2026"
 };
