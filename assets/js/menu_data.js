@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-09-14T19:00:10.282Z
+// Updated: 2026-09-21T20:46:12.788Z
 
 const MENU_DATA = {
     "activities": {
@@ -387,38 +387,38 @@ const HOURS_DATA = {
     "regular": [
         {
             "day": "Sunday",
-            "open": "11:00 AM",
+            "open": "12:00 PM",
             "close": "6:00 PM"
         },
         {
             "day": "Monday",
-            "open": "11:00 AM",
+            "open": "12:00 PM",
             "close": "6:00 PM"
         },
         {
             "day": "Tuesday",
-            "open": "11:00 AM",
+            "open": "12:00 PM",
             "close": "6:00 PM"
         },
         {
             "day": "Wednesday",
-            "open": "11:00 AM",
+            "open": "12:00 PM",
             "close": "6:00 PM"
         },
         {
             "day": "Thursday",
-            "open": "11:00 AM",
+            "open": "12:00 PM",
             "close": "6:00 PM"
         },
         {
             "day": "Friday",
-            "open": "11:00 AM",
+            "open": "12:00 PM",
             "close": "6:00 PM"
         },
         {
-            "day": "Labor Day",
-            "open": "11:00 AM",
-            "close": "8:00 PM"
+            "day": "Reservations Call Business #",
+            "open": "12:00 PM",
+            "close": "6:00 PM"
         }
     ],
     "custom": [],
