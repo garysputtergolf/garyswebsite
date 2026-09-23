@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
-// Updated: 2026-09-21T20:46:12.788Z
+// Updated: 2026-09-23T17:41:23.209Z
 
 const MENU_DATA = {
     "activities": {
@@ -380,41 +380,11 @@ const MENU_DATA = {
 const ANNOUNCEMENTS_DATA = {
     "text": "Come to Gary's before we close on September 13th!!",
     "startDate": "8/31/2026",
-    "endDate": "9/30/2026"
+    "endDate": "9/13/2026"
 };
 
 const HOURS_DATA = {
     "regular": [
-        {
-            "day": "Sunday",
-            "open": "12:00 PM",
-            "close": "6:00 PM"
-        },
-        {
-            "day": "Monday",
-            "open": "12:00 PM",
-            "close": "6:00 PM"
-        },
-        {
-            "day": "Tuesday",
-            "open": "12:00 PM",
-            "close": "6:00 PM"
-        },
-        {
-            "day": "Wednesday",
-            "open": "12:00 PM",
-            "close": "6:00 PM"
-        },
-        {
-            "day": "Thursday",
-            "open": "12:00 PM",
-            "close": "6:00 PM"
-        },
-        {
-            "day": "Friday",
-            "open": "12:00 PM",
-            "close": "6:00 PM"
-        },
         {
             "day": "Reservations Call Business #",
             "open": "12:00 PM",
